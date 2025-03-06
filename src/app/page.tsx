@@ -1,20 +1,28 @@
-import type { FC } from 'react';
-import Link from 'next/link';
-import { env } from '@/env';
+import { auth } from '@/auth';
 
-import { HelloWorldLabel } from './_components/hello-world-label';
+import { SigninButton } from './_component/auth/signin-button';
+import { SignoutButton } from './_component/auth/signout-button';
+import { UserAvatar } from './_component/auth/user-avatar';
 
-const Home: FC = () => {
+const Home: React.FC = async () => {
+  const session = await auth();
+
+  console.log({ session });
+
+  if (!session)
+    return (
+      <>
+        <p>サインインしていません</p>
+        <SigninButton />
+      </>
+    );
+
   return (
-    <main>
-      <div className="flex h-screen items-center justify-center">
-        <div className="flex flex-col items-center">
-          <HelloWorldLabel />
-          <p>ENV：{env.ENV}</p>
-          <p>DEBUG：{env.DEBUG}</p>
-          <Link href="/about">About</Link>
-        </div>
-      </div>
+    <main className="">
+      <p>{session.user!.name}</p>
+      <p>{session.user!.email}</p>
+      <UserAvatar />
+      <SignoutButton />
     </main>
   );
 };
