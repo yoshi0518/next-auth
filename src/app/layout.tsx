@@ -4,6 +4,8 @@ import { Noto_Sans_JP } from 'next/font/google';
 
 import '@/styles/globals.css';
 
+import { Header } from './_component/header';
+
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   preload: false,
@@ -26,7 +28,10 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
       lang="ja"
       className={notoSansJP.className}
     >
-      <body className="">{children}</body>
+      <body className="">
+        <Header />
+        <main className="container mx-auto">{children}</main>
+      </body>
     </html>
   );
 };

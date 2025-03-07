@@ -1,6 +1,7 @@
 import { signIn } from '@/auth';
+import { Button } from '@/components/ui/button';
 
-export const SigninButton: React.FC = () => {
+export const SigninButton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <form
       action={async () => {
@@ -8,12 +9,12 @@ export const SigninButton: React.FC = () => {
         await signIn();
       }}
     >
-      <button
+      <Button
         type="submit"
-        className="rounded border bg-black p-2 text-white"
+        variant="outline"
       >
-        SignIn
-      </button>
+        {children}
+      </Button>
     </form>
   );
 };
