@@ -1,19 +1,14 @@
-import { signIn } from '@/auth';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export const SigninButton: React.FC = () => {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signIn();
-      }}
+    <Button
+      type="submit"
+      variant="outline"
+      asChild
     >
-      <button
-        type="submit"
-        className="rounded border bg-black p-2 text-white"
-      >
-        SignIn
-      </button>
-    </form>
+      <Link href="/signin">SignIn</Link>
+    </Button>
   );
 };

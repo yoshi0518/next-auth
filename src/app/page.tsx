@@ -2,7 +2,6 @@ import { auth } from '@/auth';
 
 import { SigninButton } from './_component/auth/signin-button';
 import { SignoutButton } from './_component/auth/signout-button';
-import { UserAvatar } from './_component/auth/user-avatar';
 
 const Home: React.FC = async () => {
   const session = await auth();
@@ -12,6 +11,7 @@ const Home: React.FC = async () => {
   if (!session)
     return (
       <>
+        <p className="text-extrabold mt-8 bg-blue-200 p-4 text-center text-2xl">Home</p>
         <p>サインインしていません</p>
         <SigninButton />
       </>
@@ -19,10 +19,10 @@ const Home: React.FC = async () => {
 
   return (
     <main className="">
+      <p className="text-extrabold mt-8 bg-blue-200 p-4 text-center text-2xl">Home</p>
       <p>{session.user!.name}</p>
       <p>{session.user!.email}</p>
-      <UserAvatar />
-      <SignoutButton />
+      <SignoutButton>SignOut</SignoutButton>
     </main>
   );
 };

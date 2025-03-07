@@ -1,6 +1,7 @@
 import { signOut } from '@/auth';
+import { Button } from '@/components/ui/button';
 
-export const SignoutButton: React.FC = () => {
+export const SignoutButton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <form
       action={async () => {
@@ -8,12 +9,12 @@ export const SignoutButton: React.FC = () => {
         await signOut();
       }}
     >
-      <button
+      <Button
         type="submit"
-        className="rounded border bg-black p-2 text-white"
+        variant="outline"
       >
-        SignOut
-      </button>
+        {children}
+      </Button>
     </form>
   );
 };
