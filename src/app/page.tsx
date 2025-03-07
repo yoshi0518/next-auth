@@ -13,7 +13,7 @@ const Home: React.FC = async () => {
       <>
         <p className="text-extrabold mt-8 bg-blue-200 p-4 text-center text-2xl">Home</p>
         <p>サインインしていません</p>
-        <SigninButton>SignIn</SigninButton>
+        <SigninButton />
       </>
     );
 

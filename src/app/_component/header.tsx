@@ -21,7 +21,7 @@ export const Header: React.FC = async () => {
             </Button>
           </li>
         ))}
-        <li className="ml-auto">{session ? <UserAvatar /> : <SigninButton>SignIn</SigninButton>}</li>
+        <li className="ml-auto">{session ? <UserAvatar /> : <SigninButton />}</li>
       </ul>
     </header>
   );
