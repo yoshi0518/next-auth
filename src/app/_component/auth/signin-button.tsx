@@ -1,20 +1,14 @@
-import { signIn } from '@/auth';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
-export const SigninButton: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SigninButton: React.FC = () => {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signIn();
-      }}
+    <Button
+      type="submit"
+      variant="outline"
+      asChild
     >
-      <Button
-        type="submit"
-        variant="outline"
-      >
-        {children}
-      </Button>
-    </form>
+      <Link href="/signin">SignIn</Link>
+    </Button>
   );
 };
